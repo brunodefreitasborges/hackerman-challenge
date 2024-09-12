@@ -20,4 +20,8 @@ export class ResultComponent {
     this._searchStore.resetResult();
     return this._router.navigate(['search']);
   }
+
+  trackByFn(index: number, item: string): number {
+    return index;
+  }
 }

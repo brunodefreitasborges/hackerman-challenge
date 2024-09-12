@@ -7,7 +7,7 @@
                 <span [ngClass]="film != 'N/A' ? 
                 'px-2 py-1 bg-[#353535] rounded-md text-on-surface' : 
                 'px-2 py-1 rounded-md text-[#ffffff3f] border-[1px] border-[#ffffff3f]'" 
-                *ngFor="let film of searchResult.films">{{film}}</span>
+                *ngFor="let film of searchResult.films; trackBy: trackByFn">{{film}}</span>
             </div>
         </div>
         <div class="flex flex-col gap-1">
@@ -16,7 +16,7 @@
                 <span [ngClass]="starship != 'N/A' ? 
                 'px-2 py-1 bg-[#353535] rounded-md text-on-surface' : 
                 'px-2 py-1 rounded-md text-[#ffffff3f] border-[1px] border-[#ffffff3f]'" 
-                *ngFor="let starship of searchResult.starships">{{starship}}</span>
+                *ngFor="let starship of searchResult.starships; trackBy: trackByFn">{{starship}}</span>
             </div>
            
         </div>
@@ -26,7 +26,7 @@
                 <span [ngClass]="vehicle != 'N/A' ? 
                 'px-2 py-1 bg-[#353535] rounded-md text-on-surface' : 
                 'px-2 py-1 rounded-md text-[#ffffff3f] border-[1px] border-[#ffffff3f]'" 
-                *ngFor="let vehicle of searchResult.vehicles">{{vehicle}}</span>
+                *ngFor="let vehicle of searchResult.vehicles; trackBy: trackByFn">{{vehicle}}</span>
             </div>
         </div>
         <div class="flex flex-col gap-1">
@@ -35,7 +35,7 @@
                 <span [ngClass]="species != 'N/A' ? 
                 'px-2 py-1 bg-[#353535] rounded-md text-on-surface' : 
                 'px-2 py-1 rounded-md text-[#ffffff3f] border-[1px] border-[#ffffff3f]'" 
-                *ngFor="let species of searchResult.species">{{species}}</span>
+                *ngFor="let species of searchResult.species; trackBy: trackByFn">{{species}}</span>
             </div>
         </div>
         <div class="flex flex-col gap-1">
