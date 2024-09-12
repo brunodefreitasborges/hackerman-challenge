@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Lato, "Helvetica Neue", sans-serif; }
+
+@layer utilities {
+    .title {
+      @apply font-bold text-title text-on-background;
+    }
+    .subtitle {
+      @apply font-bold text-subtitle text-on-background;
+    }
+    .body {
+      @apply font-normal text-body text-on-surface;
+    }
+    .caption {
+      @apply font-normal text-caption;
+    }
+    .button {
+      @apply font-bold text-button text-black;
+    }
+  }
+  
+  .mdc-text-field:not(.mdc-text-field--invalid):not(.mdc-text-field--focused):not(.mdc-text-field--disabled) {
+    .mdc-notched-outline > * {
+      border-color: #FFE81F4D !important;
+    }
+  }
+
+  .mdc-text-field--focused {
+    .mdc-notched-outline > * {
+      border-color: #03DAC6 !important;
+    }
+  }
+
+  .mdc-text-field ::placeholder {
+    color: #CECECE !important;
+    opacity: 0.25 !important;
+}
+
+.mat-mdc-raised-button:disabled {
+    border: 1px solid #ffffff3f  !important;
+    color: #FFFFFF !important;
+    opacity: 0.32 !important;
+}
+
+.mdc-notched-outline__notch { border-right: none; }
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-text-field__input {
+    color: #CECECE !important;
+}
+
+

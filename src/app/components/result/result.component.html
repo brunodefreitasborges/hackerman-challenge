@@ -1,0 +1,67 @@
+<ng-container *ngIf="searchResult$ | async as searchResult; else loading">
+    <div class="w-full sm:w-[410px] bg-[#232323] p-6 rounded-md flex flex-col gap-6">
+        <h1 class="title">Informações sobre <br>{{ searchResult.name }}</h1>
+        <div class="flex flex-col gap-2">
+            <h2 class="subtitle">Filmes:</h2>
+            <div class="flex flex-wrap gap-1">
+                <span [ngClass]="film != 'N/A' ? 
+                'px-2 py-1 bg-[#353535] rounded-md text-on-surface' : 
+                'px-2 py-1 rounded-md text-[#ffffff3f] border-[1px] border-[#ffffff3f]'" 
+                *ngFor="let film of searchResult.films">{{film}}</span>
+            </div>
+        </div>
+        <div class="flex flex-col gap-1">
+            <h2 class="subtitle">Naves:</h2>
+            <div class="flex flex-wrap gap-2">
+                <span [ngClass]="starship != 'N/A' ? 
+                'px-2 py-1 bg-[#353535] rounded-md text-on-surface' : 
+                'px-2 py-1 rounded-md text-[#ffffff3f] border-[1px] border-[#ffffff3f]'" 
+                *ngFor="let starship of searchResult.starships">{{starship}}</span>
+            </div>
+           
+        </div>
+        <div class="flex flex-col gap-1">
+            <h2 class="subtitle">Veículos:</h2>
+            <div class="flex flex-wrap gap-2">
+                <span [ngClass]="vehicle != 'N/A' ? 
+                'px-2 py-1 bg-[#353535] rounded-md text-on-surface' : 
+                'px-2 py-1 rounded-md text-[#ffffff3f] border-[1px] border-[#ffffff3f]'" 
+                *ngFor="let vehicle of searchResult.vehicles">{{vehicle}}</span>
+            </div>
+        </div>
+        <div class="flex flex-col gap-1">
+            <h2 class="subtitle">Espécie:</h2>
+            <div class="flex flex-wrap gap-2">
+                <span [ngClass]="species != 'N/A' ? 
+                'px-2 py-1 bg-[#353535] rounded-md text-on-surface' : 
+                'px-2 py-1 rounded-md text-[#ffffff3f] border-[1px] border-[#ffffff3f]'" 
+                *ngFor="let species of searchResult.species">{{species}}</span>
+            </div>
+        </div>
+        <div class="flex flex-col gap-1">
+            <h2 class="subtitle">Planeta:</h2>
+            <div class="flex flex-wrap gap-2">
+                <span [ngClass]="searchResult.homeworld != 'N/A' ? 
+                'px-2 py-1 bg-[#353535] rounded-md text-on-surface' : 
+                'px-2 py-1 rounded-md text-[#ffffff3f] border-[1px] border-[#ffffff3f]'" 
+                >{{searchResult.homeworld}}</span>
+            </div>
+           
+        </div>
+
+
+        <button class="mt-6" (click)="return()" color="accent" mat-raised-button>Pesquisar novamente</button>
+    </div>
+
+</ng-container>
+
+<ng-template #loading>
+    <div class="w-[410px] bg-[#232323] p-6 rounded-md flex flex-col items-center justify-center gap-6">
+        <img src="assets/IconeStormTrooper.png" alt="Carregando">
+        <span class="subtitle">Carregando...</span>
+    </div>
+</ng-template>
+
+<ng-template #notApplicable>
+    <span>N/A</span>
+</ng-template>

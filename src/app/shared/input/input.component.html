@@ -1,0 +1,4 @@
+<mat-form-field [color]="color" [appearance]="appearance"  class="w-full">
+    <input class="w-full" [formControl]="formControl" type="text" matInput placeholder="{{placeholder}}">
+    <mat-icon matSuffix *ngIf="!!icon" color="{{color}}">{{icon}}</mat-icon>
+</mat-form-field>
