@@ -5,6 +5,7 @@ import { ResultComponent } from './components/result/result.component';
 import { SearchComponent } from './components/search/search.component';
 import { EmailGuard } from './guards/email.guard';
 import { SearchGuard } from './guards/search.guard';
+import { ResultGuard } from './guards/result.guard';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'result',
+    canActivate: [ResultGuard],
     component: ResultComponent
   }
 ];

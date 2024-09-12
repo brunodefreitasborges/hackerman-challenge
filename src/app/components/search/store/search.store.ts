@@ -3,6 +3,7 @@ import { ComponentStore, tapResponse } from "@ngrx/component-store";
 import { SearchService } from "../service/search.service";
 import { catchError, concatMap, forkJoin, map, mergeMap, Observable, of, switchMap, take } from "rxjs";
 import { SearchResultItem } from "../service/search.model";
+import { LocalStorageService } from "src/app/service/local-storage.service";
 
 export interface SearchState {
     query?: string;
@@ -13,7 +14,7 @@ export interface SearchState {
 @Injectable()
 export class SearchStore extends ComponentStore<SearchState> {
 
-    constructor(private _searchService: SearchService) {
+    constructor(private _searchService: SearchService, private _localStorageService: LocalStorageService) {
         super({});
     }
 
@@ -33,14 +34,6 @@ export class SearchStore extends ComponentStore<SearchState> {
         )))
         );
     });
-
-    buildRequest(urls: string[]) {
-        if(urls.length === 0) {
-            return of(null);
-        } else {
-            return urls.map(url => this._searchService.fetchDetails(url));
-        }
-    }
 
      readonly fetchDetails = this.effect((results$: Observable<SearchResultItem>) => {
         return results$.pipe(
@@ -70,6 +63,7 @@ export class SearchStore extends ComponentStore<SearchState> {
                     }),
                     tapResponse(
                         (updatedResults) => {
+                            this._localStorageService.setItem('result', updatedResults);
                             this.setResults(updatedResults);
                         },
                         (error: string) => {
@@ -109,6 +103,7 @@ export class SearchStore extends ComponentStore<SearchState> {
     }));
 
    resetResult(): void {
+    this._localStorageService.removeItem('result');
     this.setResults(undefined);
    }
 
